@@ -1,0 +1,19 @@
+ul
+  each repo in repoList
+    li
+      p= repo.name
+      p= `${repo.mainbranch.name}\t${repo.language}\t${repo.is_private}`
+      p= "Branches"
+      ul
+        each branch in repo.branches
+          li= branch.name
+      
+      p= "Tags"
+      ul
+        each tag in repo.tags
+          li= tag.name
+    
+      p= "Pull Requests"
+      ul
+        each pr in repo.pullRequests
+          li= pr.name
