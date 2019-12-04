@@ -26,14 +26,12 @@ const transformData = R.compose(
   R.pick(["summary", "worklog"]),
 )
 
-const flatIssueField = issue =>
-  R.compose(
+const flatIssueField = R.compose(
     R.omit("fields"),
     R.merge(R.prop("fields", issue))
-  )(issue)
+  )
 
-const getWorklogData = issue =>
-  R.compose(
+const getWorklogData = R.compose(
     R.join("\n"),
     R.map(R.compose(
       R.join("\t"),
@@ -42,7 +40,7 @@ const getWorklogData = issue =>
       R.assoc("key", R.prop("key", issue))
     )),
     R.prop("worklog")
-  )(issue)
+  )
 
 const issueKey = "YCS-11";
 
